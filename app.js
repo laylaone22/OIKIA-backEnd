@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
 import { handleErrors, throw404 } from './middleware/errors.js';
+import setCors from './middleware/cors.js';
 // import plantsRouter from './routes/plants.js';
 
 // Express init
@@ -24,6 +25,7 @@ mongoose
   .catch((err) => console.log(err));
 
 app.use(express.json());
+app.use(setCors);
 // app.use('/plants', plantsRouter);
 app.use(throw404);
 app.use(handleErrors);
