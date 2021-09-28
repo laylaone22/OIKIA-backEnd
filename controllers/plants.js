@@ -1,7 +1,7 @@
-import plants from "../model/plants.js";
+import Plant from "../models/plants.js";
 
 export const getPlants = async (req, res, next) => {
-  const plants = await plant.find(req.query).populate(
+  const plants = await Plant.find(req.query).populate(
     "donor",
     "-createdAt -updatedAt -__v'"
   );
@@ -10,7 +10,7 @@ export const getPlants = async (req, res, next) => {
 
 export const addPlants = async (req, res, next) => {
   try {
-    const newPLant = new Food(req.body);
+    const newPLant = new Plant(req.body);
     await newPLant.save();
     res.send(newPLant);
   } catch (err) {

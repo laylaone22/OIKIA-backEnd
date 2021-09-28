@@ -1,17 +1,25 @@
 
 import express from "express";
 import mongoose from "mongoose";
-import cors from "cors";
-import postRoutes from "./routes/postsRoutes.js";
-import dotenv from "dotenv";
-import userRouter from "./routes/users.js";
+import dotenv from "dotenv"
 
-const app = express();
+
+import setCors from "./middleware/cors.js";
+import userRouter from "./routes/users.js";
+import {errorHandler} from "./middleware/error.js";
+dotenv.config()
+
+const app = express();  
+app.use(setCors)
 app.use(express.json());
+
 app.use("/users", userRouter);
 
+app.use(errorHandler)
+//const url = "mongodb+srv://Frank:frank123@cluster0.7qatk.mongodb.net/plantapp?retryWrites=true&w=majority";
 
-const url = "mongodb+srv://Frank:frank123@cluster0.7qatk.mongodb.net/foodapp?retryWrites=true&w=majority";
+const url= process.env.DB_URL;
+
 
 const options = {useNewUrlParser:true};
 
@@ -21,4 +29,4 @@ mongoose.connect(url,options)
 
 
 
-app.listen(5000,()=> console.log("server runing"))
+app.listen(5005,()=> console.log("server runing"))

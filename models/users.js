@@ -7,7 +7,7 @@ import { hash } from "bcrypt";
 
 const userSchema = new Schema(
   {
-    Name: {
+    name: {
       type: String,
       required: true,
       trim: true,
@@ -39,11 +39,6 @@ const userSchema = new Schema(
         validator: (val) => validator.isAlphanumeric(val),
         message: "{VALUE} is not a valid password",
       },
-    },
-    userID: {
-      type: String,
-      // required: true,
-      trim: true,
     },
   },
   {
