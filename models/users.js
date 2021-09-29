@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 const { Schema, model } = mongoose;
 
-import validator from 'validator';
+// import validator from 'validator';
 import { hash } from 'bcrypt';
 
 const userSchema = new Schema(
@@ -10,10 +10,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
       trim: true,
-      validate: {
-        validator: (val) => validator.isAlpha(val),
-        message: '{VALUE} is not a valid email',
-      },
+      // validate: {
+      //   validator: (val) => validator.isAlpha(val),
+      //   message: '{VALUE} is not a valid email',
+      // },
     },
     gardenType: {
       type: String,
@@ -25,19 +25,19 @@ const userSchema = new Schema(
     email: {
       type: String,
       required: true,
-      trim: true,
-      validate: {
-        validator: (val) => validator.isEmail(val),
-        message: '{VALUE} is not a valid email',
-      },
+      // trim: true,
+      // validate: {
+      //   validator: (val) => validator.isEmail(val),
+      //   message: '{VALUE} is not a valid email',
+      // },
     },
     password: {
       type: String,
       required: true,
-      validate: {
-        validator: (val) => validator.isAlphanumeric(val),
-        message: '{VALUE} is not a valid password',
-      },
+      // validate: {
+      //   validator: (val) => validator.isAlphanumeric(val),
+      //   message: '{VALUE} is not a valid password',
+      // },
     },
   },
   {
