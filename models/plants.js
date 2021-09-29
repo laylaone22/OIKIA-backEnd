@@ -21,10 +21,10 @@ const plantSchema = new Schema(
       required: true,
     },
     goodCompanions: {
-      type: [string],
+      type: [String],
     },
     badCompanions: {
-      type: [string],
+      type: [String],
     },
     wateringInterval: {
       type: Number,
