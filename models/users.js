@@ -1,8 +1,8 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 const { Schema, model } = mongoose;
 
-import validator from "validator";
-import { hash } from "bcrypt";
+import validator from 'validator';
+import { hash } from 'bcrypt';
 
 const userSchema = new Schema(
   {
@@ -12,14 +12,14 @@ const userSchema = new Schema(
       trim: true,
       validate: {
         validator: (val) => validator.isAlpha(val),
-        message: "{VALUE} is not a valid email",
+        message: '{VALUE} is not a valid email',
       },
     },
     gardenType: {
       type: String,
       enum: {
-        values: ["inDoor", "outDoor"],
-        message: "{VALUE} is not valid user type",
+        values: ['inDoor', 'outDoor'],
+        message: '{VALUE} is not valid user type',
       },
     },
     email: {
@@ -28,7 +28,7 @@ const userSchema = new Schema(
       trim: true,
       validate: {
         validator: (val) => validator.isEmail(val),
-        message: "{VALUE} is not a valid email",
+        message: '{VALUE} is not a valid email',
       },
     },
     password: {
@@ -36,7 +36,7 @@ const userSchema = new Schema(
       required: true,
       validate: {
         validator: (val) => validator.isAlphanumeric(val),
-        message: "{VALUE} is not a valid password",
+        message: '{VALUE} is not a valid password',
       },
     },
   },
@@ -45,13 +45,13 @@ const userSchema = new Schema(
   }
 );
 
-userSchema.pre("save", async function (next) {
+userSchema.pre('save', async function (next) {
   const hashedPassword = await hash(this.password, 12);
   this.password = hashedPassword;
   next();
 });
 
-userSchema.set("toJSON", {
+userSchema.set('toJSON', {
   virtuals: true,
   transform: (doc, ret) => {
     ret.id = ret._id;
@@ -64,5 +64,5 @@ userSchema.set("toJSON", {
   },
 });
 
-const User = model("User", userSchema);
+const User = model('User', userSchema);
 export default User;
