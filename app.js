@@ -4,29 +4,31 @@ import dotenv from 'dotenv';
 
 import { handleErrors, throw404 } from './middleware/errors.js';
 import setCors from './middleware/cors.js';
-// import plantsRouter from './routes/plants.js';
+import plantsRouter from './routes/plants.js';
 
 // Express init
-
 const app = express();
+const PORT = process.env.PORT || 3000;
 
+// dotenv init
 dotenv.config();
 
-const PORT = process.env.PORT;
+// Mongoose init
+const URL = process.env.MONGODB;
 
-const url = process.env.MONGODB;
-
+// Mongoose connection
 mongoose
-  .connect(url, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then((result) => console.log('connected to MongoDB'))
-  .catch((err) => console.log(err));
+    .connect(URL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    .then(() => console.log('connected to MongoDB'))
+    .catch((err) => console.log(err));
 
+// Middleware
 app.use(express.json());
 app.use(setCors);
-// app.use('/plants', plantsRouter);
+app.use('/plants', plantsRouter);
 app.use(throw404);
 app.use(handleErrors);
 
