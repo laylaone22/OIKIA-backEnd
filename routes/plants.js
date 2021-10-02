@@ -104,5 +104,4 @@ router.delete("/:id", (req, res) => {
 });
 // DELETE http://localhost:5000/api/plants/3 tested in Postman
 
-export default PlantsRouter;
-*/
+export default plantsRouter;*/
