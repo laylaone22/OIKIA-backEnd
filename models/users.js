@@ -61,8 +61,8 @@ userSchema.pre('save', async function () {
 });
 
 ////  login
-// step 2. auth the password on login using helper comparePassword (hook--> authorizePassword)
-userSchema.method('authorizePassword', async function (clearTextPassword) {
+// step 2. auth the password on login using helper comparePassword (hook--> authenticate)
+userSchema.method('authenticate', async function (clearTextPassword) {
     // Compare the encrypted password with the given one
     return await comparePassword(clearTextPassword, this.password);
 });

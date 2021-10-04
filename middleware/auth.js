@@ -8,11 +8,13 @@ export const verifyLogin = async (req, res, next) => {
     try {
         // access the token provided through the userSchema hooks
         const token = req.header('x-auth-token');
+
         // If there is no token throw an error
         if (!token) throw new createError.Unauthorized();
 
         // if there is a token verify that is valid using the hook verifyToken from userSchema
         const verifiedUser = await User.verifyToken(token);
+
         // If there is no token throw an error
         if (!verifiedUser) throw new createError.Unauthorized();
 

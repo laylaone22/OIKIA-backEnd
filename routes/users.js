@@ -9,13 +9,13 @@ import { verifyLogin } from '../middleware/auth.js';
 const userRouter = Router();
 
 //verifyLogin,
-userRouter.route('/').get(getUsers); // verifyAdmin ==> if admin implemented (but not yet)
+userRouter.route('/').get(verifyLogin, getUsers); // verifyAdmin ==> if admin implemented (but not yet)
 
 userRouter
     .route('/:id')
-    .get(getSingleUser) // verifyIsUserOrAdmin ==> if admin implemented (but not yet)
-    .put(validateWith(validationRulesPUT), updateUser) // verifyIsUserOrAdmin ==> if admin implemented (but not yet)
-    .delete(deleteUser); // verifyIsUserOrAdmin ==> if admin implemented (but not yet)
+    .get(verifyLogin, getSingleUser) // verifyIsUserOrAdmin ==> if admin implemented (but not yet)
+    .put(verifyLogin, validateWith(validationRulesPUT), updateUser) // verifyIsUserOrAdmin ==> if admin implemented (but not yet)
+    .delete(verifyLogin, deleteUser); // verifyIsUserOrAdmin ==> if admin implemented (but not yet)
 
 // New Endpoint for signing up
 userRouter.route('/signup').post(validateWith(validationRulesPOST), addUser);
