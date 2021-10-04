@@ -1,14 +1,11 @@
-import bcrypt from 'bcrypt';
 import validator from 'validator';
 import createError from 'http-errors';
 
 // model
 import User from '../models/users.js';
 
-// helpers
-import { signJWT, verifyJWT } from '../helpers/auth.js';
-
 // get all users
+// fetch from here http://localhost:3000/users
 export const getUsers = async (req, res, next) => {
     try {
         const users = await User.find({});
@@ -18,8 +15,22 @@ export const getUsers = async (req, res, next) => {
     }
 };
 
+// get one user by ID
+// fetch from here http://localhost:3000/users/sdjalkdjadkja
+export const getSingleUser = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const user = await User.findById(id);
+        if (!user) throw new createError.NotFound();
+        res.status(200).send(user);
+    } catch (err) {
+        next(err);
+    }
+};
+
 // sign up
 // addUser controller is validated with post rules in the /signup route
+// fetch to here http://localhost:3000/users/signup
 export const addUser = async (req, res, next) => {
     try {
         const newUser = new User(req.body);
@@ -31,28 +42,24 @@ export const addUser = async (req, res, next) => {
     }
 };
 
+// login
+// fetch to here http://localhost:3000/users/login
 export const loginUser = async (req, res, next) => {
     try {
         // get email and password
         const { email, password } = req.body;
-        console.log(req.body);
 
         // normalize email to correctly find the normalized email coming from validation rules PUT
         const normalizedEmail = validator.normalizeEmail(email);
-        console.log(normalizedEmail);
 
         // use normalizedEmail to find the user
         const userToCheck = await User.findOne({ email: normalizedEmail });
-        console.log(userToCheck);
+
         // if the email is not found throw error
         if (!userToCheck) throw new createError.Unauthorized();
 
         // if email found check if the password matches using hook authenticate() from userSchema
         const match = await userToCheck.authenticate(password);
-        console.log(match);
-
-        // or ... julia's approach without hooks:
-        //const match = await bcrypt.compare(password, user.password);
 
         // if no match throw error
         if (!match) throw new createError.Unauthorized();
@@ -60,29 +67,20 @@ export const loginUser = async (req, res, next) => {
         // if all conditions are met generate a token with hook generateToken()
         const token = await userToCheck.generateToken();
 
-        // or ... julia's approach without hooks:
-        //const token = await signJWT({ id: user._id, type: 'auth' }, process.env.JWT_SECRET, { expiresIn: '7d' });
         res.header('x-auth-token', token).status(200).send(userToCheck);
     } catch (error) {
         next(error);
     }
 };
 
-export const getSingleUser = async (req, res, next) => {
-    try {
-        console.log(req.params);
-        const { id } = req.params;
-        const user = await User.findById(id);
-        if (!user) throw new createError.NotFound();
-        res.status(200).send(user);
-    } catch (err) {
-        next(err);
-    }
-};
-
+// Update
+// updateUser controller uses modified findByIdAndUpdate method in userSchema
+// fetch from here http://localhost:3000/users/askldajdlkajljka
 export const updateUser = async (req, res, next) => {
     try {
         const { id } = req.params;
+        // findByIdAndUpdate() checks if the field modified is password and applied validations
+        // if not password, uses the normal put
         const updated = await User.findByIdAndUpdate(id, req.body, { new: true, runValidators: true });
         if (!updated) throw new createError.NotFound();
         res.status(200).send(updated);
@@ -91,6 +89,8 @@ export const updateUser = async (req, res, next) => {
     }
 };
 
+// delete
+// fetch from here http://localhost:3000/users/sadlkadkljalkdaa
 export const deleteUser = async (req, res, next) => {
     try {
         const { id } = req.params;

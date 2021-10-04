@@ -92,7 +92,7 @@ userSchema.pre('findOneAndUpdate', async function () {
     this._update.password = await encryptPassword(this._update.password);
 });
 
-// step 6. remember to delete the password from the database before saving the user
+// step 6. remember to delete the password from the database
 userSchema.set('toJSON', {
     virtuals: true,
     transform: (_, ret) => {
