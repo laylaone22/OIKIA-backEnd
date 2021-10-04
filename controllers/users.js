@@ -1,21 +1,11 @@
-import bcrypt from 'bcrypt';
+import validator from 'validator';
 import createError from 'http-errors';
+
+// model
 import User from '../models/users.js';
-import { signJWT } from '../middleware/auth.js';
 
-
-// sign up
-export const addUser = async (req, res, next) => {
-    try {
-        const newUser = new User(req.body);
-        console.log(newUser);
-        await newUser.save();
-        res.status(201).send(newUser);
-    } catch (err) {
-        next(err);
-    }
-};
-
+// get all users
+// fetch from here http://localhost:3000/users
 export const getUsers = async (req, res, next) => {
     try {
         const users = await User.find({});
@@ -25,27 +15,89 @@ export const getUsers = async (req, res, next) => {
     }
 };
 
+// get one user by ID
+// fetch from here http://localhost:3000/users/sdjalkdjadkja
+export const getSingleUser = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const user = await User.findById(id);
+        if (!user) throw new createError.NotFound();
+        res.status(200).send(user);
+    } catch (err) {
+        next(err);
+    }
+};
+
+// sign up
+// addUser controller is validated with post rules in the /signup route
+// fetch to here http://localhost:3000/users/signup
+export const addUser = async (req, res, next) => {
+    try {
+        const newUser = new User(req.body);
+        //console.log(newUser);
+        await newUser.save();
+        res.status(201).send(newUser);
+    } catch (err) {
+        next(err);
+    }
+};
+
+// login
+// fetch to here http://localhost:3000/users/login
 export const loginUser = async (req, res, next) => {
     try {
+        // get email and password
         const { email, password } = req.body;
 
-        const user = await User.findOne({ email });
-        if (!user) throw new createError.Unauthorized();
-        const match = await bcrypt.compare(password, user.password);
-        if (!match) throw new createError.Unauthorized();
-        ////
-        const token = await signJWT({ id: user._id }, process.env.JWT_SECRET);
-        res.header('x-auth-token', token).status(200).send(user);
+        // normalize email to correctly find the normalized email coming from validation rules PUT
+        const normalizedEmail = validator.normalizeEmail(email);
 
-        ////
-        res.status(200).send(user);
+        // use normalizedEmail to find the user
+        const userToCheck = await User.findOne({ email: normalizedEmail });
+
+        // if the email is not found throw error
+        if (!userToCheck) throw new createError.Unauthorized();
+
+        // if email found check if the password matches using hook authenticate() from userSchema
+        const match = await userToCheck.authenticate(password);
+
+        // if no match throw error
+        if (!match) throw new createError.Unauthorized();
+
+        // if all conditions are met generate a token with hook generateToken()
+        const token = await userToCheck.generateToken();
+
+        res.header('x-auth-token', token).status(200).send(userToCheck);
     } catch (error) {
         next(error);
     }
 };
 
-export const deleteUser = async (res, req, next) => {};
+// Update
+// updateUser controller uses modified findByIdAndUpdate method in userSchema
+// fetch from here http://localhost:3000/users/askldajdlkajljka
+export const updateUser = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        // findByIdAndUpdate() checks if the field modified is password and applied validations
+        // if not password, uses the normal put
+        const updated = await User.findByIdAndUpdate(id, req.body, { new: true, runValidators: true });
+        if (!updated) throw new createError.NotFound();
+        res.status(200).send(updated);
+    } catch (err) {
+        next(err);
+    }
+};
 
-export const updateUser = async (res, req, next) => {};
-
-export const getSingleUser = async (res, req, next) => {};
+// delete
+// fetch from here http://localhost:3000/users/sadlkadkljalkdaa
+export const deleteUser = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const deleted = await User.findByIdAndRemove(id);
+        if (!deleted) throw new createError.NotFound();
+        res.status(204).send();
+    } catch (err) {
+        next(err);
+    }
+};

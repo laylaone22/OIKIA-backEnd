@@ -4,17 +4,18 @@ import { addUser, getUsers, loginUser, deleteUser, updateUser, getSingleUser } f
 import validateWith from '../middleware/validation.js';
 
 import { validationRulesPOST, validationRulesPUT } from '../helpers/validationRule.js';
-import { verifyLogin, verifyAdmin, verifyIsUserOrAdmin } from '../middleware/auth.js';
+import { verifyLogin } from '../middleware/auth.js';
 
 const userRouter = Router();
 
-userRouter.route('/').get(verifyLogin, verifyAdmin, getUsers);
+//verifyLogin,
+userRouter.route('/').get(verifyLogin, getUsers); // verifyAdmin ==> if admin implemented (but not yet)
 
 userRouter
     .route('/:id')
-    .get(verifyLogin, verifyIsUserOrAdmin, getSingleUser)
-    .put(verifyLogin, verifyIsUserOrAdmin, validateWith(validationRulesPUT))
-    .delete(verifyLogin, verifyIsUserOrAdmin, deleteUser);
+    .get(verifyLogin, getSingleUser) // verifyIsUserOrAdmin ==> if admin implemented (but not yet)
+    .put(verifyLogin, validateWith(validationRulesPUT), updateUser) // verifyIsUserOrAdmin ==> if admin implemented (but not yet)
+    .delete(verifyLogin, deleteUser); // verifyIsUserOrAdmin ==> if admin implemented (but not yet)
 
 // New Endpoint for signing up
 userRouter.route('/signup').post(validateWith(validationRulesPOST), addUser);

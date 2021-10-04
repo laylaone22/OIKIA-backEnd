@@ -39,6 +39,7 @@ export const addPlant = async (req, res, next) => {
 
 export const getPlantByID = async (req, res, next) => {
     try {
+        console.log(req.params);
         const { id } = req.params;
         const plant = await Plant.findById(id);
         if (!plant) throw new createError.NotFound();
