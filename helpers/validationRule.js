@@ -1,9 +1,13 @@
-import { body, sanitizeBody } from 'express-validator';
+import { body } from 'express-validator';
 
+// validate name and email when posting new users
 export const validationRulesPOST = [
-    body('email').isEmail().withMessage('Not a valid e-mail address').trim().escape().normalizeEmail(),
-    body('firstName').isAlpha().withMessage('Only letters allowed').trim().escape(),
-    body('lastName').isAlpha().withMessage('Only letters allowed').trim().escape()
+    body('name').isAlpha().withMessage('Only letters allowed').trim().escape(),
+    body('email').isEmail().withMessage('Not a valid e-mail address').trim().escape().normalizeEmail()
 ];
 
-export const validationRulesPUT = [];
+// same as POST but optional because users do not HAVE to update the fields
+export const validationRulesPUT = [
+    body('name').optional().isAlpha().withMessage('Only letters allowed').trim().escape(),
+    body('email').optional().isEmail().withMessage('Not a valid e-mail address').trim().escape().normalizeEmail()
+];
