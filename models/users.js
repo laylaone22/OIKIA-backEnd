@@ -44,17 +44,31 @@ const userSchema = new Schema(
         //         values: ['inDoor', 'outDoor']
         //     }
         // },
-        myFavorites: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Plant'
-            }
-        ]
+        myFavorites: {
+            type: Schema.Types.ObjectId,
+            required: true,
+            trim: true,
+            ref: 'Plant' // child ref
+        },
+        myPlants: {
+            type: Schema.Types.ObjectId,
+            required: true,
+            trim: true,
+            ref: 'myPlants' // make a myPlants model for child ref
+        }
     },
     {
         timestamps: true
     }
 );
+
+// virtuals
+// parent ref for gardens
+userSchema.virtual('myGardens', {
+    ref: 'Garden', // make one model for garden
+    foreignField: 'userID',
+    localField: '_id'
+});
 
 //// sign up
 
