@@ -6,6 +6,7 @@ import { handleErrors, throw404 } from './middleware/errors.js';
 import setCors from './middleware/cors.js';
 import plantsRouter from './routes/plants.js';
 import userRouter from './routes/users.js';
+import favouritesRouter from './routes/favourites.js';
 
 // Express init
 const app = express();
@@ -31,6 +32,7 @@ app.use(express.json());
 app.use(setCors);
 app.use('/plants', plantsRouter);
 app.use('/users', userRouter);
+app.use('/favourites', favouritesRouter);
 
 // 404 to trigger middleware if no other routes match
 app.use(throw404);
