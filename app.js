@@ -6,7 +6,7 @@ import { handleErrors, throw404 } from './middleware/errors.js';
 import setCors from './middleware/cors.js';
 import plantsRouter from './routes/plants.js';
 import userRouter from './routes/users.js';
-import favouritesRouter from './routes/favourites.js';
+import favoritesRouter from './routes/favorites.js';
 
 // Express init
 const app = express();
@@ -30,9 +30,9 @@ mongoose
 // Middleware
 app.use(express.json());
 app.use(setCors);
-app.use('/plants', plantsRouter);
 app.use('/users', userRouter);
-app.use('/favourites', favouritesRouter);
+app.use('/plants', plantsRouter);
+app.use('/favorites', favoritesRouter);
 
 // 404 to trigger middleware if no other routes match
 app.use(throw404);

@@ -29,7 +29,7 @@ const userSchema = new Schema(
             type: String,
             required: true,
             minlength: 8
-        }
+        },
         // role: {
         //     type: String,
         //     enum: {
@@ -44,9 +44,12 @@ const userSchema = new Schema(
         //         values: ['inDoor', 'outDoor']
         //     }
         // },
-        // gardenPlants: {
-        //     type: [String]
-        // }
+        myFavorites: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Plant'
+            }
+        ]
     },
     {
         timestamps: true
