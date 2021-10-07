@@ -32,6 +32,8 @@ app.use(setCors);
 app.use('/plants', plantsRouter);
 app.use('/users', userRouter);
 
+app.use('/public', express.static('public'));
+
 // 404 to trigger middleware if no other routes match
 app.use(throw404);
 
