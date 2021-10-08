@@ -35,7 +35,7 @@ app.use('/plants', plantsRouter);
 app.use('/users', userRouter);
 
 // static assets folders
-app.use('/public/images', express.static('public/images'));
+app.use('/public/image', express.static('public/image'));
 app.use('/public/icons-png', express.static('public/icons-png'));
 app.use('/public/icons-svg', express.static('public/icons-svg'));
 
