@@ -6,9 +6,14 @@ const myPlantSchema = new Schema(
     {
         plants: {
             type: Schema.Types.ObjectId,
-            required: true,
             trim: true,
             ref: 'Plant'
+        },
+        alias: String,
+        wateringIntervall: Number,
+        garden: {
+            type: Schema.Types.ObjectId,
+            ref: 'MyGarden'
         }
     },
     { timestamps: true }

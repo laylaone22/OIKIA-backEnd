@@ -1,14 +1,14 @@
-// import { Router } from 'express';
+import { Router } from 'express';
 
-// import { getFavorites, addFavorite, updateFavorites } from '../controllers/favorites.js';
-// import { verifyLogin } from '../middleware/auth.js';
+import { getFavorites, addFavorite, updateFavorites } from '../controllers/favorites.js';
+import { verifyLogin } from '../middleware/auth.js';
 
-// const favoritesRouter = Router();
+const favoritesRouter = Router();
 
-// favoritesRouter.route('/').get(getFavorites).post(verifyLogin, addFavorite);
+favoritesRouter.route('/').get(getFavorites).post(verifyLogin, addFavorite);
 
-// favoritesRouter.route('/:id').put(verifyLogin, updateFavorites);
+favoritesRouter.route('/:id').put(verifyLogin, updateFavorites);
 
-// //.delete(deleteFavorites).put(updateFavorites);
+//.delete(deleteFavorites).put(updateFavorites);
 
-// export default favoritesRouter;
+export default favoritesRouter;

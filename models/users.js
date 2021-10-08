@@ -44,18 +44,22 @@ const userSchema = new Schema(
         //         values: ['inDoor', 'outDoor']
         //     }
         // },
-        myFavorites: {
-            type: Schema.Types.ObjectId,
-            required: true,
-            trim: true,
-            ref: 'Plant' // child ref
-        },
-        myPlants: {
-            type: Schema.Types.ObjectId,
-            required: true,
-            trim: true,
-            ref: 'myPlants' // make a myPlants model for child ref
-        }
+        myFavorites: [
+            {
+                type: Schema.Types.ObjectId,
+                // required: true,
+                trim: true,
+                ref: 'Plant'
+            }
+        ],
+        myPlants: [
+            {
+                type: Schema.Types.ObjectId,
+                // required: true,
+                trim: true,
+                ref: 'myPlants' // make a myPlants model for child ref
+            }
+        ]
     },
     {
         timestamps: true

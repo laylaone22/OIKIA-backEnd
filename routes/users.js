@@ -8,6 +8,7 @@ import validateWith from '../middleware/validation.js';
 
 import { validationRulesPOST, validationRulesPUT } from '../helpers/validationRule.js';
 import { verifyLogin } from '../middleware/auth.js';
+import favoritesRouter from './favorites.js';
 
 const userRouter = Router();
 
@@ -27,7 +28,7 @@ userRouter.route('/signup').post(validateWith(validationRulesPOST), addUser);
 userRouter.route('/login').post(loginUser);
 
 // new Endpoint for favourites inside the user route
-userRouter.route('/favourites').get(getFavorites).post(verifyLogin, addFavorite);
-userRouter.route('/favourites/:id').put(verifyLogin, updateFavorites);
+userRouter.use('/favorites', favoritesRouter);
+userRouter.use('/favorites/:id', favoritesRouter);
 
 export default userRouter;
