@@ -44,14 +44,45 @@ const userSchema = new Schema(
         //         values: ['inDoor', 'outDoor']
         //     }
         // },
-        // gardenPlants: {
-        //     type: [String]
+        // myFavorites: {
+        //     type: Schema.Types.ObjectId,
+        //     //required: true,
+        //     trim: true,
+        //     ref: 'MyFavorites' // child ref
+        // },
+        // myPlants: {
+        //     type: Schema.Types.ObjectId,
+        //     //required: true,
+        //     trim: true,
+        //     ref: 'myPlant' // make a myPlants model for child ref
         // }
     },
+
     {
         timestamps: true
     }
 );
+// virtuals
+// parent ref for myFavorites
+userSchema.virtual('myFavoritesList', {
+    ref: 'MyFavoritesList', // make one model for garden
+    foreignField: 'userID',
+    localField: '_id'
+});
+
+// parent ref for MyPlantsList
+userSchema.virtual('MyPlantsList', {
+    ref: 'MyPlantsList', // make one model for garden
+    foreignField: 'userID',
+    localField: '_id'
+});
+
+// parent ref for MyGardensList
+userSchema.virtual('MyGardensList', {
+    ref: 'MyGardensList', // make one model for garden
+    foreignField: 'userID',
+    localField: '_id'
+});
 
 //// sign up
 

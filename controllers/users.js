@@ -8,7 +8,9 @@ import User from '../models/users.js';
 // fetch from here http://localhost:3000/users
 export const getUsers = async (req, res, next) => {
     try {
-        const users = await User.find({});
+        const users = await User.find({}).populate('myFavoritesList', '_id favorites -userID');
+        //.populate('myPlantsList', '_id plants')
+        //.populate('myGardensList', '_id gardens');
         res.status(200).send(users);
     } catch (err) {
         next(err);
@@ -34,7 +36,6 @@ export const getSingleUser = async (req, res, next) => {
 export const addUser = async (req, res, next) => {
     try {
         const newUser = new User(req.body);
-        //console.log(newUser);
         await newUser.save();
         res.status(201).send(newUser);
     } catch (err) {

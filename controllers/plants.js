@@ -35,7 +35,7 @@ export const addPlant = async (req, res, next) => {
 // // dynamic controllers
 
 // get by id
-// fetch from http://localhost:3000/plants/plantcyclopedia/id/asldjasdlkajalkdjlj
+// fetch from http://localhost:3000/plants/plantcyclopedia/id/:id
 
 export const getPlantByID = async (req, res, next) => {
     try {

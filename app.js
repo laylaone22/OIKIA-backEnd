@@ -2,10 +2,16 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
+// middlewares
 import { handleErrors, throw404 } from './middleware/errors.js';
 import setCors from './middleware/cors.js';
-import plantsRouter from './routes/plants.js';
+
+// routes
 import userRouter from './routes/users.js';
+import plantsRouter from './routes/plants.js';
+import myPlantsListRouter from './routes/myPlantsList.js';
+import myFavoritesListRouter from './routes/myFavoritesList.js';
+import myGardensListRouter from './routes/myGardensList.js';
 
 // Express init
 const app = express();
@@ -29,8 +35,13 @@ mongoose
 // Middleware
 app.use(express.json());
 app.use(setCors);
-app.use('/plants', plantsRouter);
+
+// routes
 app.use('/users', userRouter);
+app.use('/plants', plantsRouter);
+app.use('/myplantslist', myPlantsListRouter);
+app.use('/myfavoriteslist', myFavoritesListRouter);
+app.use('/mygardenslist', myGardensListRouter);
 
 // static assets folders
 // http://localhost:3000/public/images/tomato.jpg
