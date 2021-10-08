@@ -3,7 +3,7 @@
         "plantName": "tomato",
         "scientificName": "Solanum Lycopersicum",
         "briefDescription": "Tomato plants are vines, initially decumbent, typically growing 180 cm (6 ft) or more above the ground if supported, although erect bush varieties have been bred, generally 100 cm (3 ft 3 in) tall or shorter. Indeterminate types are tender perennials, dying annually in temperate climates (they are originally native to tropical highlands), although they can live up to three years in a greenhouse in some cases. Determinate types are annual in all climates.",
-        "type": "vegetable",
+        "type": "vegetables",
         "goodCompanions": [
             "basil",
             "carrot",
@@ -22,16 +22,16 @@
             "onion"
         ],
         "badCompanions": ["red cabbage", "peas", "fennel", "cucumber", "potato", "beetroot"],
-        "wateringInterval": 0,
+        "wateringInterval": 4,
         "lightConditions": "full sun",
         "season": "warm",
         "frostTolerance": false,
         "lifeSpan": "from March to September",
         "firstHarvestExpected": 13,
         "lastHarvestExpected": 16,
-        "icon": "/public/icons/SVG/13_tomato.svg",
+        "icon": "/public/icons-svg/13_tomato.svg",
         "wiki": "https://en.wikipedia.org/wiki/Tomato",
-        "img": "/public/image/tomato.jpg"
+        "img": "/public/images/13_tomato.png"
     },
     {
         "plantName": "eggplant",
@@ -48,9 +48,9 @@
         "firstHarvestExpected": 12,
         "lastHarvestExpected": 17,
 
-        "icon": "/public/icons/SVG/25_eggplant.svg",
+        "icon": "/public/icons-svg/25_eggplant.svg",
         "wiki": "https://en.wikipedia.org/wiki/Eggplant",
-        "img": "/public/image/eggplant.jpg"
+        "img": "/public/images/eggplant.jpg"
     },
     {
         "plantName": "red cabbage",
@@ -61,15 +61,15 @@
         "badCompanions": ["garlic", "cabbage", "tomato", "onion"],
         "wateringInterval": 7,
         "lightConditions": "full sun",
-        "season": "cold",
+        "season": "cool",
         "frostTolerance": true,
         "lifeSpan": "from March to July",
         "firstHarvestExpected": 4,
         "lastHarvestExpected": 8,
 
-        "icon": "/public/icons/SVG/4_Lombardy cabbage.svg",
+        "icon": "/public/icons-svg/4_Lombardy cabbage.svg",
         "wiki": "https://en.wikipedia.org/wiki/Red_cabbage",
-        "img": "/public/image/red cabbage.jpeg"
+        "img": "/public/images/red cabbage.jpeg"
     },
     {
         "plantName": "cauliflower",
@@ -87,9 +87,9 @@
         "firstHarvestExpected": 7,
         "lastHarvestExpected": 11,
 
-        "icon": "/public/icons/SVG/10_cauliflower.svg",
+        "icon": "/public/icons-svg/10_cauliflower.svg",
         "wiki": "https://en.wikipedia.org/wiki/Cauliflower",
-        "img": "/public/image/cauliflower.jpg"
+        "img": "/public/images/cauliflower.jpg"
     },
     {
         "plantName": "savory",
@@ -159,9 +159,9 @@
         "firstHarvestExpected": 16,
         "lastHarvestExpected": 19,
 
-        "icon": "/public/icons/SVG/8_broccoli.svg",
+        "icon": "/public/icons-svg/8_broccoli.svg",
         "wiki": "https://en.wikipedia.org/wiki/Broccoli",
-        "img": "/image/broccoli.jpg"
+        "img": "/public/images/broccoli.jpg"
     },
     {
         "plantName": "beans",
@@ -195,9 +195,9 @@
         "firstHarvestExpected": 7,
         "lastHarvestExpected": 11,
 
-        "icon": "/public/icons/SVG/23_beans.svg",
+        "icon": "/public/icons-svg/23_beans.svg",
         "wiki": "https://en.wikipedia.org/wiki/Bean",
-        "img": "/image/beans.jpg"
+        "img": "/public/images/beans.jpg"
     },
     {
         "plantName": "chinese cabbage",
@@ -245,7 +245,7 @@
         "firstHarvestExpected": 12,
         "lastHarvestExpected": 17,
 
-        "icon": "/public/icons/SVG/5_yellow onion.svg",
+        "icon": "/public/icons-svg/5_yellow onion.svg",
         "wiki": "https://en.wikipedia.org/wiki/Onion",
         "img": "../public/image/onion.jpg"
     },
@@ -282,7 +282,7 @@
         "lifeSpan": "from April to November",
         "firstHarvestExpected": 8,
         "lastHarvestExpected": 12,
-        "icon": "/public/icons/SVG/7_spinach.svg",
+        "icon": "/public/icons-svg/7_spinach.svg",
         "wiki": "https://en.wikipedia.org/wiki/Spinach",
         "img": "/public/images/spinach.jpg"
     },
@@ -301,7 +301,7 @@
         "firstHarvestExpected": 50,
         "lastHarvestExpected": 60,
 
-        "icon": "/public/icons/SVG/18_asparagus.svg",
+        "icon": "/public/icons-svg/18_asparagus.svg",
         "wiki": "https://en.wikipedia.org/wiki/Asparagus",
         "img": "/public/image/asparagus.jpg"
     },
@@ -320,7 +320,7 @@
         "firstHarvestExpected": 8,
         "lastHarvestExpected": 10,
 
-        "icon": "/public/icons/SVG/26_cucumber.svg",
+        "icon": "/public/icons-svg/26_cucumber.svg",
         "wiki": "https://en.wikipedia.org/wiki/Cucumber",
         "img": "/public/images/cucumber.jpg"
     },
@@ -339,7 +339,7 @@
         "lifeSpan": "6",
         "firstHarvestExpected": 8,
         "lastHarvestExpected": 16,
-        "icon": "/public/icons/SVG/3_cabbage.svg",
+        "icon": "/public/icons-svg/3_cabbage.svg",
         "wiki": "https://en.wikipedia.org/wiki/Cabbage",
         "img": "/public/images/cabbage.jpg"
     },
@@ -377,7 +377,7 @@
         "lifeSpan": "24",
         "firstHarvestExpected": 10,
         "lastHarvestExpected": 11,
-        "icon": "/public/ icons/SVG/1_carrot.svg",
+        "icon": "/public/ icons-svg/1_carrot.svg",
         "wiki": "https://en.wikipedia.org/wiki/Carrot",
         "img": "/public/images/carrot.jpg"
     },
@@ -396,7 +396,7 @@
         "lifeSpan": "",
         "firstHarvestExpected": 6,
         "lastHarvestExpected": 12,
-        "icon": "/public/ icons/SVG/2_lettuce",
+        "icon": "/public/ icons-svg/2_lettuce",
         "wiki": "https://en.wikipedia.org/wiki/Lettuce",
         "img": "/public/images/lettuce.jpg"
     },
@@ -414,7 +414,7 @@
         "lifeSpan": "10",
         "firstHarvestExpected": 25,
         "lastHarvestExpected": 40,
-        "icon": "/public/ icons/SVG/6_leek.svg",
+        "icon": "/public/ icons-svg/6_leek.svg",
         "wiki": "https://en.wikipedia.org/wiki/Leek",
         "img": "/public/images/leek.jpg"
     },
@@ -432,7 +432,7 @@
         "lifeSpan": "",
         "firstHarvestExpected": 8,
         "lastHarvestExpected": 12,
-        "icon": "/public/ icons/SVG/9_pumpkin",
+        "icon": "/public/ icons-svg/9_pumpkin",
         "wiki": "https://en.wikipedia.org/wiki/Pumpkin",
         "img": "/public/images/pumpkin-2.jpg"
     },
@@ -451,7 +451,7 @@
         "lifeSpan": "",
         "firstHarvestExpected": 0,
         "lastHarvestExpected": 0,
-        "icon": "/public/ icons/SVG/12_aloe vera.svg",
+        "icon": "/public/ icons-svg/12_aloe vera.svg",
         "wiki": "https://en.wikipedia.org/wiki/Aloe_vera",
         "img": "/public/images/aloe vera.jpg"
     },
@@ -470,7 +470,7 @@
         "lifeSpan": "",
         "firstHarvestExpected": 8,
         "lastHarvestExpected": 12,
-        "icon": "/public/ icons/SVG/14_green and red pepper.svg",
+        "icon": "/public/ icons-svg/14_green and red pepper.svg",
         "wiki": "https://en.wikipedia.org/wiki/Bell_pepper",
         "img": "/public/images/pepper.jpg"
     },
@@ -488,7 +488,7 @@
         "lifeSpan": "",
         "firstHarvestExpected": 6,
         "lastHarvestExpected": 9,
-        "icon": "/public/ icons/SVG/15_turnip.svg",
+        "icon": "/public/ icons-svg/15_turnip.svg",
         "wiki": "https://en.wikipedia.org/wiki/Turnip",
         "img": "/public/images/turnip.jpg"
     },
@@ -506,7 +506,7 @@
         "lifeSpan": "5",
         "firstHarvestExpected": 6,
         "lastHarvestExpected": 18,
-        "icon": "/public/ icons/SVG/17_artichoke.svg",
+        "icon": "/public/ icons-svg/17_artichoke.svg",
         "wiki": "https://en.wikipedia.org/wiki/Artichoke",
         "img": "/public/images/artichoke.jpg"
     },
@@ -525,7 +525,7 @@
         "lifeSpan": "",
         "firstHarvestExpected": 0,
         "lastHarvestExpected": 0,
-        "icon": "/public/ icons/SVG/",
+        "icon": "/public/ icons-svg/",
         "wiki": "",
         "img": "/public/images/"
     }

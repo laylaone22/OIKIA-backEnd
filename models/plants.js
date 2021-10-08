@@ -48,6 +48,9 @@ const plantSchema = new Schema(
         lastHarvestExpected: {
             type: Number
         },
+        icon: {
+            type: String
+        },
         wiki: {
             type: String
         },
