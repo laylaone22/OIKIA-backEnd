@@ -13,7 +13,7 @@ const plantSchema = new Schema(
             type: String,
             trim: true
         },
-        description: {
+        briefDescription: {
             type: String
         },
         type: {
@@ -47,6 +47,9 @@ const plantSchema = new Schema(
         },
         lastHarvestExpected: {
             type: Number
+        },
+        icon: {
+            type: String
         },
         wiki: {
             type: String
