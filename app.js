@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3000;
 dotenv.config();
 
 // Mongoose init
-const URL = process.env.MONGODB;
+const URL = process.env.MONGODB_PROD;
 
 // Mongoose connection
 mongoose
