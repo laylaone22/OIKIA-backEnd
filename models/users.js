@@ -71,7 +71,7 @@ userSchema.virtual('myFavoritesList', {
 });
 
 // parent ref for MyPlantsList
-userSchema.virtual('MyPlantsList', {
+userSchema.virtual('myPlantsList', {
     ref: 'MyPlantsList', // make one model for garden
     foreignField: 'userID',
     localField: '_id'

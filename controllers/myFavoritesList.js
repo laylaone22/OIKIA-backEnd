@@ -64,10 +64,13 @@ export const updateMyFavoritesListByID = async (req, res, next) => {
 };
 
 // DELETE one myFavorites list based on userID
-// fetch from here http://localhost:3000/myfavorites/:id
+// fetch from here http://localhost:3000/myfavoriteslist/:id
 export const deleteMyFavoritesListByID = async (req, res, next) => {
     try {
-        res.status(200).send(users);
+        const { id } = req.params;
+        const deleted = await MyFavoritesList.findByIdAndRemove(id);
+        if (!deleted) throw new createError.NotFound();
+        res.status(200).send();
     } catch (err) {
         next(err);
     }

@@ -7,11 +7,11 @@ import { Router } from 'express';
 const myGardensListRouter = Router();
 
 // static routes
-//myGardensRouter.route('/').get(getMyGardensLists).post(addMyGardensList);
+//myGardensListRouter.route('/').get(getMyGardensLists).post(addMyGardensList);
 
 /*
 // dynamic routes
-myGardensRouter.route('/:id').get(getMyGardensListByID).put(updateMyGardensListByID).delete(deleteMyGardensListByID);
+myGardensListRouter.route('/:id').get(getMyGardensListByID).put(updateMyGardensListByID).delete(deleteMyGardensListByID);
 
 */
 export default myGardensListRouter;

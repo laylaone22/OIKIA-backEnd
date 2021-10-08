@@ -11,7 +11,7 @@ const myPlantsListSchema = new Schema(
             trim: true,
             ref: 'User'
         },
-        favorites: [
+        plants: [
             {
                 type: Schema.Types.ObjectId,
                 required: true,
