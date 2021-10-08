@@ -1,7 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-//import * as path from 'path';
 
 import { handleErrors, throw404 } from './middleware/errors.js';
 import setCors from './middleware/cors.js';
@@ -17,7 +16,6 @@ dotenv.config();
 
 // Mongoose init
 const URL = process.env.MONGODB;
-//const __dirname = path.resolve();
 
 // Mongoose connection
 mongoose
@@ -35,8 +33,11 @@ app.use('/plants', plantsRouter);
 app.use('/users', userRouter);
 
 // static assets folders
+// http://localhost:3000/public/images/tomato.jpg
 app.use('/public/image', express.static('public/image'));
+// http://localhost:3000/public/icons-png/13_tomato.png
 app.use('/public/icons-png', express.static('public/icons-png'));
+// http://localhost:3000/public/icons-svg/13_tomato.svg
 app.use('/public/icons-svg', express.static('public/icons-svg'));
 
 // 404 to trigger middleware if no other routes match
@@ -47,9 +48,3 @@ app.use(handleErrors);
 
 // Start listening
 app.listen(PORT, () => console.log(`Express running on port ${PORT}`));
-
-/*
-app.use("/public", express.static(__dirname + "/public"));
-app.use("/public2", express.static(__dirname + "/public2")); 
-
-*/
