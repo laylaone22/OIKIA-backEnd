@@ -7,7 +7,7 @@ import {
     getMyGardenByID,
     updateMyGardenByID,
     deleteMyGardenByID
-} from '../controllers/myGardensList.js';
+} from '../controllers/myGardens.js';
 
 // router init
 const myGardensRouter = Router({ mergeParams: true });

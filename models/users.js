@@ -38,13 +38,13 @@ const userSchema = new Schema(
             type: Schema.Types.ObjectId,
             // required: true,
             trim: true,
-            ref: 'MyFavoritesList' // child ref
+            ref: 'MyFavoritesList' // child ref collection MyFavoritesList
         },
         myPlantsList: {
             type: Schema.Types.ObjectId,
             //required: true,
             trim: true,
-            ref: 'MyPlantsList' // child ref
+            ref: 'MyPlantsList' // child ref collection MyPlantsList
         }
     },
     {
@@ -54,7 +54,7 @@ const userSchema = new Schema(
 
 // parent ref for MyGardensList
 userSchema.virtual('myGardens', {
-    ref: 'MyGarden', // make one model for garden
+    ref: 'MyGarden', // parent ref collection MyGarden
     foreignField: 'userID',
     localField: '_id'
 });

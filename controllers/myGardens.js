@@ -14,7 +14,6 @@ import MyGarden from '../models/myGardens.js';
 export const getGardens = async (req, res, next) => {
     try {
         const { userID } = req.params;
-        console.log(userID);
         const query = userID ? { userID } : {};
         const gardens = await MyGarden.find(query)
             .populate('userID', 'name email')
