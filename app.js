@@ -11,7 +11,7 @@ import userRouter from './routes/users.js';
 import plantsRouter from './routes/plants.js';
 import myPlantsListRouter from './routes/myPlantsList.js';
 import myFavoritesListRouter from './routes/myFavoritesList.js';
-import myGardensListRouter from './routes/myGardensList.js';
+import myGardensRouter from './routes/myGardens.js';
 
 // Express init
 const app = express();
@@ -41,7 +41,7 @@ app.use('/users', userRouter);
 app.use('/plants', plantsRouter);
 app.use('/myplantslist', myPlantsListRouter);
 app.use('/myfavoriteslist', myFavoritesListRouter);
-app.use('/mygardenslist', myGardensListRouter);
+app.use('/mygardens', myGardensRouter);
 
 // static assets folders
 // http://localhost:3000/public/images/tomato.jpg

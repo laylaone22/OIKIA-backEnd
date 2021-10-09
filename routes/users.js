@@ -9,7 +9,7 @@ import { verifyLogin } from '../middleware/auth.js';
 // myFavoritesList router to merge
 import myFavoritesListRouter from '../routes/myFavoritesList.js';
 import myPlantsListRouter from '../routes/myPlantsList.js';
-import myGardensListRouter from '../routes/myGardensList.js';
+import myGardensRouter from './myGardens.js';
 
 const userRouter = Router();
 
@@ -28,7 +28,7 @@ userRouter.use('/:userID/myfavoriteslist', myFavoritesListRouter);
 userRouter.use('/:userID/myplantslist', myPlantsListRouter);
 
 // merged params route to get myGardensList for one user by userID!!!!
-userRouter.use('/:userID/mygardenslist', myGardensListRouter);
+userRouter.use('/:userID/mygardens', myGardensRouter);
 
 // New Endpoint for signing up
 userRouter.route('/signup').post(validateWith(validationRulesPOST), addUser);

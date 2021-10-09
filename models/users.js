@@ -9,10 +9,6 @@ import { encryptPassword, comparePassword } from '../helpers/encryption.js';
 // helpers to auth (JWT - node.js)
 import { signJWT, verifyJWT } from '../helpers/auth.js';
 
-// at the moment the userSchema has following fields:
-// name, email, password
-// more to come ...
-
 const userSchema = new Schema(
     {
         name: {
@@ -29,7 +25,7 @@ const userSchema = new Schema(
             type: String,
             required: true,
             minlength: 8
-        }
+        },
         // role: {
         //     type: String,
         //     enum: {
@@ -38,48 +34,27 @@ const userSchema = new Schema(
         //     },
         //     default: 'user'
         // },
-        // gardenType: {
-        //     type: String,
-        //     enum: {
-        //         values: ['inDoor', 'outDoor']
-        //     }
-        // },
-        // myFavorites: {
-        //     type: Schema.Types.ObjectId,
-        //     //required: true,
-        //     trim: true,
-        //     ref: 'MyFavorites' // child ref
-        // },
-        // myPlants: {
-        //     type: Schema.Types.ObjectId,
-        //     //required: true,
-        //     trim: true,
-        //     ref: 'myPlant' // make a myPlants model for child ref
-        // }
+        myFavoritesList: {
+            type: Schema.Types.ObjectId,
+            // required: true,
+            trim: true,
+            ref: 'MyFavoritesList' // child ref
+        },
+        myPlantsList: {
+            type: Schema.Types.ObjectId,
+            //required: true,
+            trim: true,
+            ref: 'MyPlantsList' // child ref
+        }
     },
-
     {
         timestamps: true
     }
 );
-// virtuals
-// parent ref for myFavorites
-userSchema.virtual('myFavoritesList', {
-    ref: 'MyFavoritesList', // make one model for garden
-    foreignField: 'userID',
-    localField: '_id'
-});
-
-// parent ref for MyPlantsList
-userSchema.virtual('myPlantsList', {
-    ref: 'MyPlantsList', // make one model for garden
-    foreignField: 'userID',
-    localField: '_id'
-});
 
 // parent ref for MyGardensList
-userSchema.virtual('MyGardensList', {
-    ref: 'MyGardensList', // make one model for garden
+userSchema.virtual('myGardens', {
+    ref: 'MyGarden', // make one model for garden
     foreignField: 'userID',
     localField: '_id'
 });
@@ -107,7 +82,6 @@ userSchema.method('generateToken', async function () {
 // step 4. verify whether the token comes from us using helper verifyJWT (hook--> verifyToken)
 userSchema.static('verifyToken', async function (token) {
     try {
-        console.log(process.env.JWT_SECRET);
         const decodedToken = await verifyJWT(token, process.env.JWT_SECRET);
         return await this.findById(decodedToken.id);
     } catch (err) {
@@ -136,16 +110,6 @@ userSchema.set('toJSON', {
 
 // userSchema.pre('save', async function () {
 //     if (this.role === 'admin') this.role = 'user';
-// });
-
-// userSchema.set('toJSON', {
-//     virtuals: true,
-//     transform: (doc, ret) => {
-//         ret.id = ret._id;
-//         delete ret.password;
-//
-//         return ret;
-//     }
 // });
 
 const User = model('User', userSchema);

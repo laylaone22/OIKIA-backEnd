@@ -18,7 +18,7 @@ export const getMyFavoritesLists = async (req, res, next) => {
         const query = userID ? { userID } : {};
         const lists = await MyFavoritesList.find(query)
             .populate('userID', 'name email')
-            .populate('favorites', 'plantName _id');
+            .populate('favorites', '-__v -createdAt -updatedAt');
         res.status(200).send(lists);
     } catch (err) {
         next(err);
@@ -42,7 +42,9 @@ export const addMyFavoritesList = async (req, res, next) => {
 export const getMyFavoritesListByID = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const list = await MyFavoritesList.findById(id);
+        const list = await MyFavoritesList.findById(id)
+            .populate('userID', 'name email')
+            .populate('favorites', '-__v -createdAt -updatedAt');
         if (!list) throw new createError.NotFound();
         res.status(200).send(list);
     } catch (err) {

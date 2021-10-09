@@ -14,11 +14,10 @@ import MyPlantsList from '../models/myPlantsList.js';
 export const getMyPlantsLists = async (req, res, next) => {
     try {
         const { userID } = req.params;
-        console.log(userID);
         const query = userID ? { userID } : {};
         const lists = await MyPlantsList.find(query)
             .populate('userID', 'name email')
-            .populate('plants', 'plantName _id');
+            .populate('plants', '-__v -createdAt -updatedAt');
         res.status(200).send(lists);
     } catch (err) {
         next(err);
@@ -42,7 +41,9 @@ export const addMyPlantsList = async (req, res, next) => {
 export const getMyPlantsListByID = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const list = await MyPlantsList.findById(id);
+        const list = await MyPlantsList.findById(id)
+            .populate('userID', 'name email')
+            .populate('plants', '-__v -createdAt -updatedAt');
         if (!list) throw new createError.NotFound();
         res.status(200).send(list);
     } catch (err) {
@@ -55,7 +56,7 @@ export const getMyPlantsListByID = async (req, res, next) => {
 export const updateMyPlantsListByID = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const updated = await MyPlantsList.findByIdAndUpdate(id, req.body);
+        const updated = await MyPlantsList.findByIdAndUpdate(id, req.body, { new: true, runValidators: true });
         if (!updated) throw new createError.NotFound();
         res.status(200).send(updated);
     } catch (err) {
