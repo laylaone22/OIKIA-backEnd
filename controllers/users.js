@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import createError from "http-errors";
-import User from "../models/users.js";
+import User from "../models/User.js";
 import { signJWT } from "../middleware/auth.js";
 
 export const getUsers = async (req, res, next) => {

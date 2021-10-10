@@ -4,7 +4,6 @@ const { Schema, model } = mongoose;
 import validator from "validator";
 import { hash } from "bcrypt";
 
-
 const userSchema = new Schema(
   {
     name: {
