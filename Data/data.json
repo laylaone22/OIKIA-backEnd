@@ -1,7 +1,7 @@
 [
     {
         "plantName": "tomato",
-        "scientificName": "Solanum Lycopersicum",
+        "scientificName": "Solanum lycopersicum",
         "briefDescription": "Tomato plants are vines, initially decumbent, typically growing 180 cm (6 ft) or more above the ground if supported, although erect bush varieties have been bred, generally 100 cm (3 ft 3 in) tall or shorter. Indeterminate types are tender perennials, dying annually in temperate climates (they are originally native to tropical highlands), although they can live up to three years in a greenhouse in some cases. Determinate types are annual in all climates.",
         "type": "vegetables",
         "goodCompanions": [
@@ -35,7 +35,7 @@
     },
     {
         "plantName": "eggplant",
-        "scientificName": "Solanum Melongena",
+        "scientificName": "Solanum melongena",
         "briefDescription": "Eggplant grows 40 to 150 cm (1 ft 4 in to 4 ft 11 in) tall, with large, coarsely lobed leaves that are 10 to 20 cm (4 to 8 in) long and 5 to 10 cm (2 to 4 in) broad. Semiwild types can grow much larger, to 225 cm (7 ft 5 in), with large leaves over 30 cm (12 in) long and 15 cm (6 in) broad. On wild plants, the fruit is less than 3 cm (1+1⁄4 in) in diameter; in cultivated forms: 30 cm (12 in) or more in length are possible for long, narrow types or the large fat purple ones common to the West.",
         "type": "vegetables",
         "goodCompanions": ["beans", "radish", "salad"],
@@ -54,7 +54,7 @@
     },
     {
         "plantName": "red cabbage",
-        "scientificName": "Brassica Oleracea Capitata",
+        "scientificName": "Brassica oleracea capitata",
         "briefDescription": "The red cabbage (purple-leaved varieties of Brassica oleracea Capitata Group) is a kind of cabbage, also known as Blaukraut after preparation. Its leaves are colored dark red/purple. However, the plant changes its color according to the pH value of the soil, due to a pigment belonging to anthocyanins. In acidic soils, the leaves grow more reddish, in neutral soils they will grow more purple, while an alkaline soil will produce rather greenish-yellow coloured cabbages. This explains the fact that the same plant is known by different colours in various regions. It can be found in all Europe, throughout the Americas, in China and especially in Africa.",
         "type": "vegetables",
         "goodCompanions": ["borage", "beans", "peas", "carrot", "phacelia", "salad", "celery", "spinach"],
@@ -73,7 +73,7 @@
     },
     {
         "plantName": "cauliflower",
-        "scientificName": "Brassica Oleracea",
+        "scientificName": "Brassica oleracea",
         "briefDescription": "Cauliflower is a vegetable in the Brassicaceae family. The solid, firm head resembles that of broccoli and is usually white, but can also be yellow, purple, or green in color. Like broccoli, it sits atop a stalk. The head is wrapped in thick leaves that begin to open when the plant is ready for harvest. All cauliflower does best in cool weather.",
         "type": "vegetables",
         "goodCompanions": ["beans", "peas", "phacelia", "celery"],
@@ -411,7 +411,7 @@
     },
     {
         "plantName": "pumpkin",
-        "scientificName": "disambiguation",
+        "scientificName": "Cucurbita pepo",
         "briefDescription": "A pumpkin is a cultivar of winter squash that is round with smooth, slightly ribbed skin, and is most often deep yellow to orange in coloration. The thick shell contains the seeds and pulp. ... Pumpkins are widely grown for commercial use and as food, aesthetics, and recreational purposes.",
         "type": "fruits",
         "goodCompanions": ["sunflower", "beans", "lavender"],
@@ -447,7 +447,7 @@
     },
     {
         "plantName": "bell pepper",
-        "scientificName": "capsicum",
+        "scientificName": "Capsicum annuum",
         "briefDescription": "Bell peppers, Capsicum annuum are a cultivar group of annual or perennial plants in the family Solanaceae grown for their edible fruits. Bell pepper plants are short bushes with woody stems that grow brightly colored fruits. The alternating leaves are elliptical, smooth edged, and come to a distinct point.",
         "type": "vegetables",
         "goodCompanions": ["carrot", "cucumber", "redish", "squash", "eggplant"],
@@ -465,7 +465,7 @@
     },
     {
         "plantName": "turnip",
-        "scientificName": "root",
+        "scientificName": "Brassica rapa",
         "briefDescription": "Turnip, Brassica rapa, is an herbaceous annual or biennial plant in the family Brassicaceae grown for its edible roots and leaves. The plant possesses erect stems and 8–12 leaves forming a crown. The leaves are light green in color, hairy and thin.",
         "type": "roots",
         "goodCompanions": ["tomatoes", "celery", "garlic", "lettuce", "spinach", "cauliflower", "onion"],
@@ -483,7 +483,7 @@
     },
     {
         "plantName": "artichoke",
-        "scientificName": "disambiguation",
+        "scientificName": "Cynara cardunculus",
         "briefDescription": "An artichoke is an edible plant with many leaves and a tender, delicious heart. ... Artichokes are actually a kind of thistle, or a prickly, flowering plant. The part of an artichoke that's edible has to be picked before it blooms, or it becomes too tough to eat.",
         "type": "vegetables",
         "goodCompanions": ["peas", "cabbage", "sunflower", "tarragon"],
