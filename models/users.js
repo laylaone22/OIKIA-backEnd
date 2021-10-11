@@ -26,35 +26,29 @@ const userSchema = new Schema(
             required: true,
             minlength: 8
         },
-        // role: {
-        //     type: String,
-        //     enum: {
-        //         values: ['user', 'admin'],
-        //         message: 'Invalid user role {VALUE}'
-        //     },
-        //     default: 'user'
-        // },
-        myFavoritesList: {
-            type: Schema.Types.ObjectId,
-            // required: true,
-            trim: true,
-            ref: 'MyFavoritesList' // child ref collection MyFavoritesList
-        },
-        myPlantsList: {
-            type: Schema.Types.ObjectId,
-            //required: true,
-            trim: true,
-            ref: 'MyPlantsList' // child ref collection MyPlantsList
-        }
+        myFavorites: [
+            {
+                type: Schema.Types.ObjectId,
+                required: true,
+                trim: true,
+                ref: 'Plant' // child ref collection Plant
+            }
+        ]
     },
     {
         timestamps: true
     }
 );
 
-// parent ref for MyGardensList
+// parent ref for MyGardens
 userSchema.virtual('myGardens', {
     ref: 'MyGarden', // parent ref collection MyGarden
+    foreignField: 'userID',
+    localField: '_id'
+});
+// parent ref for MyPlants
+userSchema.virtual('myPlants', {
+    ref: 'MyPlant', // parent ref collection MyPlant
     foreignField: 'userID',
     localField: '_id'
 });

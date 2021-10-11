@@ -38,8 +38,14 @@ const myGardenSchema = new Schema(
             max: [100, '{VALUE} is unfortunately too much']
         }
     },
-    { timestamps: true }
+    { timestamps: true, toJSON: { virtuals: true } }
 );
+
+myGardenSchema.virtual('myGardenPlants', {
+    ref: 'MyPlant', // parent ref collection MyPlant
+    foreignField: 'gardenID',
+    localField: '_id'
+});
 
 const MyGarden = model('MyGarden', myGardenSchema);
 

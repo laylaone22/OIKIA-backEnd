@@ -9,8 +9,7 @@ import setCors from './middleware/cors.js';
 // routes
 import userRouter from './routes/users.js';
 import plantsRouter from './routes/plants.js';
-import myPlantsListRouter from './routes/myPlantsList.js';
-import myFavoritesListRouter from './routes/myFavoritesList.js';
+import myPlantsRouter from './routes/myPlants.js';
 import myGardensRouter from './routes/myGardens.js';
 
 // Express init
@@ -39,8 +38,7 @@ app.use(setCors);
 // routes
 app.use('/users', userRouter);
 app.use('/plants', plantsRouter);
-app.use('/myplantslist', myPlantsListRouter);
-app.use('/myfavoriteslist', myFavoritesListRouter);
+app.use('/myplants', myPlantsRouter);
 app.use('/mygardens', myGardensRouter);
 
 // static assets folders
