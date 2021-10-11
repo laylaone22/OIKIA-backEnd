@@ -6,9 +6,12 @@ import validateWith from '../middleware/validation.js';
 import { validationRulesPOST, validationRulesPUT } from '../helpers/validationRule.js';
 import { verifyLogin } from '../middleware/auth.js';
 
+// routers to merge
+import myPlantsRouter from './myPlants.js';
+import myGardensRouter from './myGardens.js';
+
 const userRouter = Router();
 
-//verifyLogin,
 userRouter.route('/').get(verifyLogin, getUsers); // verifyAdmin ==> if admin implemented (but not yet)
 
 userRouter
@@ -16,6 +19,12 @@ userRouter
     .get(verifyLogin, getSingleUser) // verifyIsUserOrAdmin ==> if admin implemented (but not yet)
     .put(verifyLogin, validateWith(validationRulesPUT), updateUser) // verifyIsUserOrAdmin ==> if admin implemented (but not yet)
     .delete(verifyLogin, deleteUser); // verifyIsUserOrAdmin ==> if admin implemented (but not yet)
+
+// merged params route to get myPlants for one user by userID!!!!
+userRouter.use('/:userID/myplants', myPlantsRouter);
+
+// merged params route to get myGardens for one user by userID!!!!
+userRouter.use('/:userID/mygardens', myGardensRouter);
 
 // New Endpoint for signing up
 userRouter.route('/signup').post(validateWith(validationRulesPOST), addUser);

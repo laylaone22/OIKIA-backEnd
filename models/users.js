@@ -9,10 +9,6 @@ import { encryptPassword, comparePassword } from '../helpers/encryption.js';
 // helpers to auth (JWT - node.js)
 import { signJWT, verifyJWT } from '../helpers/auth.js';
 
-// at the moment the userSchema has following fields:
-// name, email, password
-// more to come ...
-
 const userSchema = new Schema(
     {
         name: {
@@ -29,29 +25,33 @@ const userSchema = new Schema(
             type: String,
             required: true,
             minlength: 8
-        }
-        // role: {
-        //     type: String,
-        //     enum: {
-        //         values: ['user', 'admin'],
-        //         message: 'Invalid user role {VALUE}'
-        //     },
-        //     default: 'user'
-        // },
-        // gardenType: {
-        //     type: String,
-        //     enum: {
-        //         values: ['inDoor', 'outDoor']
-        //     }
-        // },
-        // gardenPlants: {
-        //     type: [String]
-        // }
+        },
+        myFavorites: [
+            {
+                type: Schema.Types.ObjectId,
+                required: true,
+                trim: true,
+                ref: 'Plant' // child ref collection Plant
+            }
+        ]
     },
     {
         timestamps: true
     }
 );
+
+// parent ref for MyGardens
+userSchema.virtual('myGardens', {
+    ref: 'MyGarden', // parent ref collection MyGarden
+    foreignField: 'userID',
+    localField: '_id'
+});
+// parent ref for MyPlants
+userSchema.virtual('myPlants', {
+    ref: 'MyPlant', // parent ref collection MyPlant
+    foreignField: 'userID',
+    localField: '_id'
+});
 
 //// sign up
 
@@ -76,7 +76,6 @@ userSchema.method('generateToken', async function () {
 // step 4. verify whether the token comes from us using helper verifyJWT (hook--> verifyToken)
 userSchema.static('verifyToken', async function (token) {
     try {
-        console.log(process.env.JWT_SECRET);
         const decodedToken = await verifyJWT(token, process.env.JWT_SECRET);
         return await this.findById(decodedToken.id);
     } catch (err) {
@@ -105,16 +104,6 @@ userSchema.set('toJSON', {
 
 // userSchema.pre('save', async function () {
 //     if (this.role === 'admin') this.role = 'user';
-// });
-
-// userSchema.set('toJSON', {
-//     virtuals: true,
-//     transform: (doc, ret) => {
-//         ret.id = ret._id;
-//         delete ret.password;
-//
-//         return ret;
-//     }
 // });
 
 const User = model('User', userSchema);

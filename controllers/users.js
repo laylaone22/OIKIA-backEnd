@@ -8,7 +8,15 @@ import User from '../models/users.js';
 // fetch from here http://localhost:3000/users
 export const getUsers = async (req, res, next) => {
     try {
-        const users = await User.find({});
+        const users = await User.find({})
+            .populate('myFavorites', '-__v -createdAt -updatedAt')
+            .populate('myPlants', '-__v -createdAt -updatedAt')
+            .populate('myGardens', '-__v -createdAt -updatedAt')
+            .populate({
+                path: 'myGardens',
+                populate: { path: 'myGardenPlants', model: 'MyPlant', select: '-__v -createdAt -updatedAt' }
+            })
+            .select('-__v -createdAt -updatedAt');
         res.status(200).send(users);
     } catch (err) {
         next(err);
@@ -20,7 +28,15 @@ export const getUsers = async (req, res, next) => {
 export const getSingleUser = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const user = await User.findById(id);
+        const user = await User.findById(id)
+            .populate('myFavorites', '-__v -createdAt -updatedAt')
+            .populate('myPlants', '-__v -createdAt -updatedAt')
+            .populate('myGardens', '-__v -createdAt -updatedAt')
+            .populate({
+                path: 'myGardens',
+                populate: { path: 'myGardenPlants', model: 'MyPlant', select: '-__v -createdAt -updatedAt' }
+            })
+            .select('-__v -createdAt -updatedAt');
         if (!user) throw new createError.NotFound();
         res.status(200).send(user);
     } catch (err) {
@@ -34,7 +50,6 @@ export const getSingleUser = async (req, res, next) => {
 export const addUser = async (req, res, next) => {
     try {
         const newUser = new User(req.body);
-        //console.log(newUser);
         await newUser.save();
         res.status(201).send(newUser);
     } catch (err) {
