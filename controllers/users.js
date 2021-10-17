@@ -111,7 +111,7 @@ export const deleteUser = async (req, res, next) => {
         const { id } = req.params;
         const deleted = await User.findByIdAndRemove(id);
         if (!deleted) throw new createError.NotFound();
-        res.status(204).send();
+        res.status(204).send(deleted);
     } catch (err) {
         next(err);
     }

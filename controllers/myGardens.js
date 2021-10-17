@@ -77,11 +77,11 @@ export const updateMyGardenByID = async (req, res, next) => {
 // DELETE one myGarden based on garden id
 // fetch to here http://localhost:3000/mygardens/:id
 export const deleteMyGardenByID = async (req, res, next) => {
-    const { id } = req.params;
-    const deleted = await MyGarden.findByIdAndRemove(id);
-    if (!deleted) throw new createError.NotFound();
-    res.status(200).send();
     try {
+        const { id } = req.params;
+        const deleted = await MyGarden.findByIdAndRemove(id);
+        if (!deleted) throw new createError.NotFound();
+        res.status(200).send(deleted);
     } catch (err) {
         next(err);
     }

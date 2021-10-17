@@ -73,7 +73,7 @@ export const deleteMyPlantByID = async (req, res, next) => {
         const { id } = req.params;
         const deleted = await MyPlant.findByIdAndRemove(id);
         if (!deleted) throw new createError.NotFound();
-        res.status(200).send();
+        res.status(200).send(deleted);
     } catch (err) {
         next(err);
     }
