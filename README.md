@@ -35,7 +35,7 @@ GET plant information based on plant type:
 
 ## Technology & Features
 
-<img src="https://img.icons8.com/color/48/000000/mongodb.png"/><img src="https://img.icons8.com/color/48/000000/nodejs.png"/><img src="https://d33wubrfki0l68.cloudfront.net/8236d24ee56bc4850deb8943cf27646110405a99/0d40c/img/expressjs.png"/><img src="https://img.icons8.com/color/48/000000/java-web-token.png"/>
+<img src="https://img.icons8.com/color/48/000000/mongodb.png" width="50px"/><img src="https://img.icons8.com/color/48/000000/nodejs.png" width="50px"/><img src="https://d33wubrfki0l68.cloudfront.net/8236d24ee56bc4850deb8943cf27646110405a99/0d40c/img/expressjs.png" width="50px"/><img src="https://img.icons8.com/color/48/000000/java-web-token.png" width="50px"/>
 
 ### NodeJS & ExpressJS Server
 
