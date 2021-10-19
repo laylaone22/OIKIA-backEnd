@@ -20,9 +20,9 @@ export const getGardens = async (req, res, next) => {
             .populate('myGardenPlants', '-__v -createdAt -updatedAt')
             .populate({
                 path: 'myGardenPlants',
-                populate: { path: 'plantID', model: 'Plant', select: '-__v -createdAt -updatedAt' }
+                populate: { path: 'plantID', model: 'Plant', select: '-__v' }
             })
-            .select('-__v -createdAt -updatedAt');
+            .select('-__v');
         res.status(200).send(gardens);
     } catch (err) {
         next(err);
@@ -35,7 +35,10 @@ export const addMyGarden = async (req, res, next) => {
     try {
         const newGarden = new MyGarden(req.body);
         await newGarden.save();
-        res.status(201).send(newGarden);
+        const createdGarden = await MyGarden.findById(newGarden._id)
+            .populate('userID', 'name email')
+            .populate('myGardenPlants', '-__v -createdAt -updatedAt');
+        res.status(201).send(createdGarden);
     } catch (err) {
         next(err);
     }
@@ -51,9 +54,9 @@ export const getMyGardenByID = async (req, res, next) => {
             .populate('myGardenPlants', '-__v -createdAt -updatedAt')
             .populate({
                 path: 'myGardenPlants',
-                populate: { path: 'plantID', model: 'Plant', select: '-__v -createdAt -updatedAt' }
+                populate: { path: 'plantID', model: 'Plant', select: '-__v' }
             })
-            .select('-__v -createdAt -updatedAt');
+            .select('-__v');
         if (!garden) throw new createError.NotFound();
         res.status(200).send(garden);
     } catch (err) {
