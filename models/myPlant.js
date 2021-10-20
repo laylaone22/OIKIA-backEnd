@@ -27,12 +27,25 @@ const myPlantSchema = new Schema(
             type: String,
             //required: true,
             trim: true
-        }
-        // to be added:
-        // planted on
-        // watering dates
-        // personal water interval
-        // bought at the supermarket
+        },
+        plantedAt: {
+            type: Date
+            //required: true,
+        },
+        userWatering: {
+            type: Number
+            //required: true,
+        },
+        notes: {
+            type: String,
+            //required: true,
+            trim: true
+        },
+        position: {
+            type: Number
+            //required: true,
+        },
+        isAlive: { type: Boolean, default: true }
     },
     { timestamps: true }
 );

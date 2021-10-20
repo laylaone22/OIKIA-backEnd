@@ -25,7 +25,7 @@ export const getMyPlant = async (req, res, next) => {
     }
 };
 
-// POST one MyPlants
+// POST one MyPlant
 // fetch to here http://localhost:3000/myplants
 export const addMyPlant = async (req, res, next) => {
     try {
