@@ -29,21 +29,20 @@ const myPlantSchema = new Schema(
             trim: true
         },
         plantedAt: {
-            type: Date
-            //required: true,
+            type: Date,
+            required: true
         },
         userWatering: {
-            type: Number
-            //required: true,
+            type: Number,
+            required: true
         },
         notes: {
             type: String,
-            //required: true,
             trim: true
         },
         position: {
-            type: Number
-            //required: true,
+            type: Number,
+            required: true
         },
         isAlive: { type: Boolean, default: true }
     },
