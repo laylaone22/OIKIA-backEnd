@@ -531,7 +531,7 @@
         "lifeSpan": "2",
         "firstHarvestExpected": 7,
         "lastHarvestExpected": 13,
-        "icon": "/public/icons-svg/20_garlic",
+        "icon": "/public/icons-svg/20_garlic.svg",
         "wiki": "https://en.wikipedia.org/wiki/Garlic",
         "img": "/public/image/garlic.jpg"
     },
@@ -549,7 +549,7 @@
         "lifeSpan": "2",
         "firstHarvestExpected": 7,
         "lastHarvestExpected": 13,
-        "icon": "/public/icons-svg/21_shallot",
+        "icon": "/public/icons-svg/21_shallot.svg",
         "wiki": "https://en.wikipedia.org/wiki/Shallot",
         "img": "/public/image/shallot.jpg"
     },
@@ -567,7 +567,7 @@
         "lifeSpan": "4",
         "firstHarvestExpected": 16,
         "lastHarvestExpected": 22,
-        "icon": "/public/icons-svg/23_beet.svg",
+        "icon": "/public/icons-svg/22_beet.svg",
         "wiki": "https://en.wikipedia.org/wiki/Beetroot",
         "img": "/public/image/beetroot.jpg"
     },
@@ -695,7 +695,7 @@
         "lastHarvestExpected": 48,
         "icon": "/public/icons-svg/61_papaya.svg",
         "wiki": "https://en.wikipedia.org/wiki/Papaya",
-        "img": "/public/image/papaya"
+        "img": "/public/image/papaya.jpg"
     },
     {
         "plantName": "lemon",
@@ -731,7 +731,7 @@
         "lastHarvestExpected": 62,
         "icon": "/public/icons-svg/41_watermelon.svg",
         "wiki": "https://en.wikipedia.org/wiki/Watermelon",
-        "img": "/public/image/watermelon,jpg"
+        "img": "/public/image/watermelon.jpg"
     },
     {
         "plantName": "mango",
