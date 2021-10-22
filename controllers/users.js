@@ -82,11 +82,31 @@ export const loginUser = async (req, res, next) => {
         // if all conditions are met generate a token with hook generateToken()
         const token = await userToCheck.generateToken();
 
-        res.header('x-auth-token', token).status(200).send(userToCheck);
+        const populatedCheckedUser = await User.findById(userToCheck._id)
+            .populate('myFavorites', '-__v -createdAt -updatedAt')
+            .populate('myPlants', '-__v -createdAt -updatedAt')
+            .populate('myGardens', '-__v -createdAt -updatedAt')
+            .populate({
+                path: 'myGardens',
+                populate: { path: 'myGardenPlants', model: 'MyPlant', select: '-__v -createdAt -updatedAt' }
+            });
+
+        res.header('x-auth-token', token).status(200).send(populatedCheckedUser);
     } catch (error) {
         next(error);
     }
 };
+
+/*
+
+const newGarden = new MyGarden(req.body);
+        await newGarden.save();
+        const createdGarden = await MyGarden.findById(newGarden._id)
+            .populate('userID', 'name email')
+            .populate('myGardenPlants', '-__v -createdAt -updatedAt');
+        res.status(201).send(createdGarden);
+        
+        */
 
 // Update
 // updateUser controller uses modified findByIdAndUpdate method in userSchema
