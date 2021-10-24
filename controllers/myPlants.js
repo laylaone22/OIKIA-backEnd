@@ -9,11 +9,12 @@ import MyPlant from '../models/myPlant.js';
 // fetch from here http://localhost:3000/myplants
 // or
 // GET only MyPlants for a user
-// fetch from here http://localhost:3000/:userID/myplants
+// fetch from here http://localhost:3000/users/:userID/myplants
 // this works because we merged params between user and myPlants routers!!!
 export const getMyPlant = async (req, res, next) => {
     try {
         const { userID } = req.params;
+        console.log(userID);
         const query = userID ? { userID } : {};
         const plant = await MyPlant.find(query)
             .populate('userID', 'name email')
