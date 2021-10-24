@@ -46,8 +46,14 @@ const myPlantSchema = new Schema(
         },
         isAlive: { type: Boolean, default: true }
     },
-    { timestamps: true }
+    { timestamps: true, toJSON: { virtuals: true } }
 );
+
+myPlantSchema.virtual('plant', {
+    ref: 'Plant', // parent ref collection Plant
+    foreignField: '_id',
+    localField: 'plantID'
+});
 
 const MyPlant = model('MyPlant', myPlantSchema);
 

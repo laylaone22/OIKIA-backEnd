@@ -18,7 +18,7 @@ export const getMyPlant = async (req, res, next) => {
         const plant = await MyPlant.find(query)
             .populate('userID', 'name email')
             .populate('gardenID', '-__v -createdAt -updatedAt')
-            .populate('plantID', '-__v -createdAt -updatedAt');
+            .populate('plant', '-__v -createdAt -updatedAt');
         res.status(200).send(plant);
     } catch (err) {
         next(err);
