@@ -29,13 +29,13 @@ const myGardenSchema = new Schema(
             type: Number,
             required: true,
             min: [1, 'Please select at least 1'],
-            max: [100, '{VALUE} is unfortunately too much']
+            max: [10, '{VALUE} is unfortunately too much']
         },
         length: {
             type: Number,
             required: true,
             min: [1, 'Please select at least 1'],
-            max: [100, '{VALUE} is unfortunately too much']
+            max: [10, '{VALUE} is unfortunately too much']
         }
     },
     { timestamps: true, toJSON: { virtuals: true } }
