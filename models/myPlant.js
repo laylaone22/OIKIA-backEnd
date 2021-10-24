@@ -55,6 +55,12 @@ myPlantSchema.virtual('plant', {
     localField: 'plantID'
 });
 
+myPlantSchema.virtual('garden', {
+    ref: 'MyGarden', // parent ref collection Plant
+    foreignField: '_id',
+    localField: 'gardenID'
+});
+
 const MyPlant = model('MyPlant', myPlantSchema);
 
 export default MyPlant;

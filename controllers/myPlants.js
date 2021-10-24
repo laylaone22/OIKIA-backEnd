@@ -15,7 +15,10 @@ export const getMyPlant = async (req, res, next) => {
     try {
         const { userID } = req.params;
         const query = userID ? { userID } : {};
-        const plant = await MyPlant.find(query).populate('plant', '-__v -createdAt -updatedAt').select('-__v');
+        const plant = await MyPlant.find(query)
+            .populate('plant', '-__v -createdAt -updatedAt')
+            .populate('garden', '-__v -createdAt -updatedAt')
+            .select('-__v');
         res.status(200).send(plant);
     } catch (err) {
         next(err);
@@ -39,7 +42,10 @@ export const addMyPlant = async (req, res, next) => {
 export const getMyPlantByID = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const list = await MyPlant.findById(id).populate('plant', '-__v -createdAt -updatedAt').select('-__v');
+        const list = await MyPlant.findById(id)
+            .populate('plant', '-__v -createdAt -updatedAt')
+            .populate('garden', '-__v -createdAt -updatedAt')
+            .select('-__v');
         if (!list) throw new createError.NotFound();
         res.status(200).send(list);
     } catch (err) {
