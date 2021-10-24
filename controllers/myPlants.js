@@ -14,7 +14,6 @@ import MyPlant from '../models/myPlant.js';
 export const getMyPlant = async (req, res, next) => {
     try {
         const { userID } = req.params;
-        console.log(userID);
         const query = userID ? { userID } : {};
         const plant = await MyPlant.find(query)
             .populate('userID', 'name email')
