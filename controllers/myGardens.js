@@ -16,7 +16,6 @@ export const getGardens = async (req, res, next) => {
         const { userID } = req.params;
         const query = userID ? { userID } : {};
         const gardens = await MyGarden.find(query)
-            .populate('userID', 'name email')
             .populate('myGardenPlants', '-__v -createdAt -updatedAt')
             .populate({
                 path: 'myGardenPlants',
@@ -50,7 +49,6 @@ export const getMyGardenByID = async (req, res, next) => {
     try {
         const { id } = req.params;
         const garden = await MyGarden.findById(id)
-            .populate('userID', 'name email')
             .populate('myGardenPlants', '-__v -createdAt -updatedAt')
             .populate({
                 path: 'myGardenPlants',
