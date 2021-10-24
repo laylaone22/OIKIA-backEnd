@@ -1,7 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import cors from 'cors';
 
 // middlewares
 import { handleErrors, throw404 } from './middleware/errors.js';
