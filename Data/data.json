@@ -555,7 +555,7 @@
     },
     {
         "plantName": "beetroot",
-        "scientificName": "disambiguation",
+        "scientificName": "Beta vulgaris",
         "briefDescription": "Beetroot is the large and fleshy root growing in the plant of the same name, eaten as a vegetable. Its superficial, thin and smooth skin has a wide range of colours, from purple-pink and reddish-orange to a brownish tone. The pulp has a sweet taste and it is usually of a dark crimson red colour with purple tinges.",
         "type": "roots",
         "goodCompanions": ["onions", "beans", "lettuce", "cabbage", "redish"],
@@ -573,7 +573,7 @@
     },
     {
         "plantName": "soybean",
-        "scientificName": "disambiguation",
+        "scientificName": "Glycine max",
         "briefDescription": "Soybean, Glycine max, is an herbaceous annual plant in the family Fabaceae grown for its edible seeds. The soybean plant is usually an erect bush with woody stems and alternately arranged leaves. ... The seeds can be a variety of colors including yellow, green, brown, black or a mottled combination.",
         "type": "vegetables",
         "goodCompanions": ["corn", "squash", "potatoes", "cucumber", "strawberries"],
@@ -609,7 +609,7 @@
     },
     {
         "plantName": "banana",
-        "scientificName": "disambiguation",
+        "scientificName": "Musa acuminata",
         "briefDescription": "A banana is a curved, yellow fruit with a thick skin and soft sweet flesh. If you eat a banana every day for breakfast, your roommate might nickname you the monkey. A banana is a tropical fruit that's quite popular all over the world. It grows in bunches on a banana tree.",
         "type": "fruits",
         "goodCompanions": ["beans", "peas", "papaya", "sweet potatoes"],
@@ -627,7 +627,7 @@
     },
     {
         "plantName": "strawberry",
-        "scientificName": "disambiguation",
+        "scientificName": "Fragaria x ananassa",
         "briefDescription": "A strawberry is both a low-growing, flowering plant and also the name of the fruit that it produces. Strawberries are soft, sweet, bright red berries. They're also delicious. Strawberries have tiny edible seeds, which grow all over their surface. When ripe, strawberries smell wonderful and taste even better.",
         "type": "fruits",
         "goodCompanions": ["beans", "chives", "lettuce", "onions"],
